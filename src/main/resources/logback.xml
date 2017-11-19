@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false">
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <target>System.out</target>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>debug</level>
+        </filter>
+        <encoder>
+            <pattern><![CDATA[
+				%-20(%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread]) %-5level %logger{80}[%L] - %msg%n
+          ]]></pattern>
+        </encoder>
+    </appender>
+
+    <appender name="STDERR" class="ch.qos.logback.core.ConsoleAppender">
+        <target>System.err</target>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>WARN</level>
+        </filter>
+        <encoder>
+            <pattern><![CDATA[
+				%-20(%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread]) %-5level %logger{80}[%L] - %msg%n
+          ]]></pattern>
+        </encoder>
+    </appender>
+
+    <appender name="projectFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.root.path}/wy-insurance-box-backend.log</file>
+        <param name="append" value="true"/>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.root.path}/wy-insurance-box-backend.%d{yyyy-MM-dd}.log.zip</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern><![CDATA[
+				%-20(%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread]) %-5level %logger{80}[%L] - %msg%n
+          ]]></pattern>
+        </encoder>
+    </appender>
+
+    <logger name="org.apache">
+        <level value="info"/>
+    </logger>
+    <logger name="ch.qos.logback">
+        <level value="warn"/>
+        <appender-ref ref="STDERR"/>
+    </logger>
+    <logger name="org.tuckey">
+        <level value="info"/>
+        <appender-ref ref="STDERR"/>
+    </logger>
+    <logger name="org.springframework">
+        <level value="info"/>
+    </logger>
+
+    <logger name="org.mongodb.driver">
+        <level value="info"/>
+    </logger>
+
+    <root>
+        <level value="${log.level}"/>
+        <appender-ref ref="STDERR"/>
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="projectFile"/>
+    </root>
+</configuration>

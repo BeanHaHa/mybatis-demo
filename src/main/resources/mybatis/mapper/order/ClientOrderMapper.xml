@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//common.mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wy.insurance.box.backend.dao.order.ClientOrderDao">
+
+    <resultMap id="orderMap" type="com.wy.insurance.box.backend.model.po.ClientOrder">
+        <result column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="insured_email" property="insuredEmail" jdbcType="VARCHAR"/>
+        <result column="insured_name" property="insuredName" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="get" parameterType="String" resultMap="orderMap">
+	  select * from sales_insure_order_client where id=#{uuid,jdbcType=VARCHAR}
+    </select>
+
+</mapper>

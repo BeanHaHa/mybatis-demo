@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!--<dubbo:registry address="${dubbo.zookeeper.url}" check="false" file="${dubbo.cache.file}/dubbo.cache"/>-->
+
+    <!--&lt;!&ndash; 使用系统变量-Ddubbo.protocol.port端口暴露服务&ndash;&gt;-->
+    <!--<dubbo:protocol port="1626" host="${dubbo.zookeeper.host}"/>-->
+    <!--<dubbo:provider id="isadmin_provider" timeout="3000" retries="0" token="true" accesslog="true"/>-->
+    <!--<dubbo:consumer check="false" timeout="3000"/>-->
+
+    <!--&lt;!&ndash;要暴露的服务接口 &ndash;&gt;-->
+    <!--<dubbo:annotation package="com.wy.base.rpc"/>-->
+    <!--<dubbo:service interface="com.wy.base.rpc.isadmin.IInsuranceAdminService" provider="isadmin_provider" ref="insuranceAdminService" version="1.0.0" retries="0"/>0-->
+</beans>
